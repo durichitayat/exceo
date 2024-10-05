@@ -1,10 +1,10 @@
 # License
 
-This project and all associated code, documentation, and resources are proprietary to [Your Name or Your Company Name] ("the Owner"). All rights are reserved by the Owner.
+This project and all associated code, documentation, and resources are proprietary to [ExCEO] ("the Owner"). All rights are reserved by the Owner.
 
 ## Terms and Conditions
 
-1. **Copyright Notice**: This project, including all source code, documentation, and associated files, is copyrighted © [Year] [Your Name or Your Company Name]. All rights reserved.
+1. **Copyright Notice**: This project, including all source code, documentation, and associated files, is copyrighted © [2024] [ExCEO]. All rights reserved.
 
 2. **Restrictions**:
    - You may not copy, modify, distribute, or perform any derivative works based on this project, in whole or in part, without the prior written permission of the Owner.
