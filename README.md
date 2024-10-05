@@ -207,8 +207,4 @@ To learn more about Next.js and the technologies used in this project, take a lo
 - [Vercel AI SDK](https://sdk.vercel.ai/docs) - Documentation for building AI-powered applications.
 - [OpenAI API Documentation](https://platform.openai.com/docs/introduction) - Learn how to use the OpenAI API.
 
-# Deploy on Vercel
 
-The easiest way to deploy your Next.js application is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
