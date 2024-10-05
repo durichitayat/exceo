@@ -78,9 +78,9 @@ Before you begin, ensure you have met the following requirements:
 
    Create a `.env.local` file in the root directory and add the necessary environment variables:
 
-   ```env
-   OPENAI_API_KEY=your-openai-api-key
-   # Add other environment variables as needed
+   ```bash
+   npm i -g vercel
+    vercel env pull
    ```
 
 4. **Run the Development Server**
