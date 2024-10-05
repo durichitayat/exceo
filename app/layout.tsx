@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          sizes="any"
+        />
+      </Head>
       <body className={`${roboto.style} ${roboto.style} text-base antialiased`}>
         {children}
       </body>
