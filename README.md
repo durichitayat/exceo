@@ -181,14 +181,15 @@ We welcome contributions from the community. Please follow these steps:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is "All Rights Reserved" [License](license.md)
 
 ## Contact
 
 For questions or support, please contact:
 
-- **Duri Chitayat**
-- GitHub: [durichitayat](https://github.com/durichitayat)
+- **Duri Chitayat** [durichitayat](https://github.com/durichitayat)
+- **Lin Conners** [linconners211](https://github.com/linconners211)
+- **Dylan Costello** [dylancost](https://github.com/dylancost)
 
 ---
 
