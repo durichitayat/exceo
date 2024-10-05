@@ -2,216 +2,135 @@
 
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
-import { ArrowRight, CheckCircle, Clock, Mail, Play } from "lucide-react";
+import Header from "@/components/ui/header";
+import Hero from "@/components/ui/hero";
+import { ArrowRight, CheckCircle, Clock, Mail } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function LandingPage() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <a
-          className="flex items-center justify-center"
-          href="#"
-        >
-          <Mail className="h-6 w-6" />
-          <span className="sr-only">ExCEO.ai</span>
-        </a>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#features"
-          >
-            Features
-          </a>
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#pricing"
-          >
-            Pricing
-          </a>
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#contact"
-          >
-            Contact
-          </a>
-        </nav>
-      </header>
+      <Header />
       <main className="flex-1">
         {/* HERO SECTION */}
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 mx-auto max-w-screen-lg">
-          <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              <div className="flex flex-col space-y-4">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  ExCEO.ai - Your AI-Powered Email Assistant
-                </h1>
-                <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Streamline your email management. Save up to 60% of your time
-                  with AI-driven prioritization, summarization, and automated
-                  responses.
-                </p>
-                <div className="w-full max-w-sm space-y-2">
-                  <form className="flex space-x-2">
-                    <Input
-                      className="max-w-lg flex-1 border border-primary-light"
-                      placeholder="Enter your email"
-                      type="email"
-                    />
-                    <Button color="bg-primary hover:bg-primary-dark">
-                      Get Started
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </form>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Start your free trial. No credit card required.
-                  </p>
-                </div>
-              </div>
-              <div
-                className="relative aspect-video cursor-pointer"
-                onClick={() => setIsVideoOpen(true)}
-              >
-                <Image
-                  src="/placeholder.gif"
-                  width={600}
-                  height={400}
-                  alt="ExCEO.ai Demo"
-                  className="w-full h-full object-cover rounded-lg"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-lg">
-                  <Play className="w-16 h-16 text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {isVideoOpen && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-            onClick={() => setIsVideoOpen(false)}
-          >
-            <div className="bg-white p-4 rounded-lg max-w-4xl w-full aspect-video">
-              <video
-                controls
-                className="w-full h-full"
-              >
-                <source
-                  src="/path-to-your-video.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        )}
+        <Hero />
         {/* FEATURES SECTION */}
         <section
           id="features"
           className="w-full py-12 md:py-24 lg:py-32 bg-gray-200 dark:bg-gray-900"
         >
-          <div className="container px-4 md:px-6 mx-auto max-w-screen-lg">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-              Key Features
-            </h2>
-            <div className="space-y-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Clock className="h-6 w-6 text-blue-500" />
-                    <h3 className="text-2xl font-bold">Email Prioritization</h3>
+          <div className="px-4 md:px-6 mx-auto grid max-w-screen-2xl">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+                Key Features
+              </h2>
+              <div className="space-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-20 items-center">
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-2">
+                      <Clock className="h-6 w-6 text-blue-500" />
+                      <h3 className="text-2xl font-bold">
+                        Email Prioritization
+                      </h3>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      ExCEO.ai uses advanced AI algorithms to analyze and
+                      prioritize your emails based on urgency, sender
+                      importance, and content relevance. This feature ensures
+                      that you focus on the most critical communications first,
+                      significantly reducing the time spent on email triage.
+                    </p>
+                    <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
+                      <li>Automatic sorting of emails into priority levels</li>
+                      <li>Customizable prioritization criteria</li>
+                      <li>Real-time updates as new emails arrive</li>
+                    </ul>
                   </div>
-                  <p className="text-gray-500 dark:text-gray-400">
-                    ExCEO.ai uses advanced AI algorithms to analyze and
-                    prioritize your emails based on urgency, sender importance,
-                    and content relevance. This feature ensures that you focus
-                    on the most critical communications first, significantly
-                    reducing the time spent on email triage.
-                  </p>
-                  <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
-                    <li>Automatic sorting of emails into priority levels</li>
-                    <li>Customizable prioritization criteria</li>
-                    <li>Real-time updates as new emails arrive</li>
-                  </ul>
-                </div>
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src="/800x600.png"
-                    height={300}
-                    width={400}
-                    alt="Thread Summarization Demo"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                <div className="order-2 md:order-1 relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src="/800x600.png"
-                    height={300}
-                    width={400}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="order-1 md:order-2 space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Mail className="h-6 w-6 text-blue-500" />
-                    <h3 className="text-2xl font-bold">Automated Responses</h3>
+                  <div className="relative aspect-video rounded-lg overflow-hidden">
+                    <Image
+                      src="/800x600.png"
+                      height={300}
+                      width={400}
+                      alt="Thread Summarization Demo"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <p className="text-gray-500 dark:text-gray-400">
-                    {`Leverage the power of AI to generate context-aware,
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-20 items-center">
+                  <div className="order-2 md:order-1 relative aspect-video rounded-lg overflow-hidden">
+                    <Image
+                      src="/800x600.png"
+                      height={300}
+                      width={400}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="order-1 md:order-2 space-y-4">
+                    <div className="flex items-center space-x-2">
+                      <Mail className="h-6 w-6 text-blue-500" />
+                      <h3 className="text-2xl font-bold">
+                        Automated Responses
+                      </h3>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {`Leverage the power of AI to generate context-aware,
                     personalized responses to routine inquiries. This feature
                     saves valuable time by drafting replies that maintain your
                     communication style and adhere to your company's guidelines.`}
-                  </p>
-                  <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
-                    <li>AI-generated draft responses for quick review</li>
-                    <li>Personalization based on email history and context</li>
-                    <li>
-                      Integration with your calendar for scheduling suggestions
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-6 w-6 text-blue-500" />
-                    <h3 className="text-2xl font-bold">Thread Summarization</h3>
+                    </p>
+                    <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
+                      <li>AI-generated draft responses for quick review</li>
+                      <li>
+                        Personalization based on email history and context
+                      </li>
+                      <li>
+                        Integration with your calendar for scheduling
+                        suggestions
+                      </li>
+                    </ul>
                   </div>
-                  <p className="text-gray-500 dark:text-gray-400">
-                    {`ExCEO.ai's thread summarization feature condenses lengthy
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-20 items-center">
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="h-6 w-6 text-blue-500" />
+                      <h3 className="text-2xl font-bold">
+                        Thread Summarization
+                      </h3>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {`ExCEO.ai's thread summarization feature condenses lengthy
                     email chains into concise, actionable summaries. This allows
                     you to quickly grasp the key points of complex discussions
                     without reading through every message.`}
-                  </p>
-                  <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
-                    <li>Intelligent extraction of main discussion points</li>
-                    <li>Highlight of action items and decisions</li>
-                    <li>Customizable summary length and detail level</li>
-                  </ul>
-                </div>
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src="/800x600.png"
-                    height={300}
-                    width={400}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
+                    </p>
+                    <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
+                      <li>Intelligent extraction of main discussion points</li>
+                      <li>Highlight of action items and decisions</li>
+                      <li>Customizable summary length and detail level</li>
+                    </ul>
+                  </div>
+                  <div className="relative aspect-video rounded-lg overflow-hidden">
+                    <Image
+                      src="/800x600.png"
+                      height={300}
+                      width={400}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        {/* PRICING SECTION */}
         <section
           id="pricing"
-          className="w-full py-12 md:py-24 lg:py-32 mx-auto max-w-screen-lg"
+          className="w-full py-12 md:py-24 lg:py-32 mx-auto max-w-screen-2xl"
         >
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6 grid max-w-screen-xl mx-20">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
               Pricing Plans
             </h2>
