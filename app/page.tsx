@@ -56,7 +56,7 @@ export default function LandingPage() {
                 <div className="w-full max-w-sm space-y-2">
                   <form className="flex space-x-2">
                     <Input
-                      className="max-w-lg flex-1"
+                      className="max-w-lg flex-1 border border-primary-light"
                       placeholder="Enter your email"
                       type="email"
                     />
@@ -110,33 +110,99 @@ export default function LandingPage() {
         {/* FEATURES SECTION */}
         <section
           id="features"
-          className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800 mx-auto max-w-screen-lg"
+          className="w-full py-12 md:py-24 lg:py-32 bg-gray-200 dark:bg-gray-900"
         >
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto max-w-screen-lg">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
               Key Features
             </h2>
-            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
-              <div className="flex flex-col items-center text-center">
-                <Clock className="h-12 w-12 mb-4 text-blue-500" />
-                <h3 className="text-lg font-bold">Email Prioritization</h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  AI-driven sorting based on urgency and impact
-                </p>
+            <div className="space-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="h-6 w-6 text-blue-500" />
+                    <h3 className="text-2xl font-bold">Email Prioritization</h3>
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    ExCEO.ai uses advanced AI algorithms to analyze and
+                    prioritize your emails based on urgency, sender importance,
+                    and content relevance. This feature ensures that you focus
+                    on the most critical communications first, significantly
+                    reducing the time spent on email triage.
+                  </p>
+                  <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
+                    <li>Automatic sorting of emails into priority levels</li>
+                    <li>Customizable prioritization criteria</li>
+                    <li>Real-time updates as new emails arrive</li>
+                  </ul>
+                </div>
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src="/800x600.png"
+                    height={300}
+                    width={400}
+                    alt="Thread Summarization Demo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <div className="flex flex-col items-center text-center">
-                <Mail className="h-12 w-12 mb-4 text-blue-500" />
-                <h3 className="text-lg font-bold">Automated Responses</h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  Generate personalized draft replies for routine inquiries
-                </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div className="order-2 md:order-1 relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src="/800x600.png"
+                    height={300}
+                    width={400}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="order-1 md:order-2 space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <Mail className="h-6 w-6 text-blue-500" />
+                    <h3 className="text-2xl font-bold">Automated Responses</h3>
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {`Leverage the power of AI to generate context-aware,
+                    personalized responses to routine inquiries. This feature
+                    saves valuable time by drafting replies that maintain your
+                    communication style and adhere to your company's guidelines.`}
+                  </p>
+                  <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
+                    <li>AI-generated draft responses for quick review</li>
+                    <li>Personalization based on email history and context</li>
+                    <li>
+                      Integration with your calendar for scheduling suggestions
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="flex flex-col items-center text-center">
-                <CheckCircle className="h-12 w-12 mb-4 text-blue-500" />
-                <h3 className="text-lg font-bold">Thread Summarization</h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  Real-time summaries of lengthy email chains
-                </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-6 w-6 text-blue-500" />
+                    <h3 className="text-2xl font-bold">Thread Summarization</h3>
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {`ExCEO.ai's thread summarization feature condenses lengthy
+                    email chains into concise, actionable summaries. This allows
+                    you to quickly grasp the key points of complex discussions
+                    without reading through every message.`}
+                  </p>
+                  <ul className="list-disc list-inside text-gray-500 dark:text-gray-400">
+                    <li>Intelligent extraction of main discussion points</li>
+                    <li>Highlight of action items and decisions</li>
+                    <li>Customizable summary length and detail level</li>
+                  </ul>
+                </div>
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src="/800x600.png"
+                    height={300}
+                    width={400}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -171,10 +237,12 @@ export default function LandingPage() {
                     </li>
                   </ul>
                 </div>
-                <Button className="mt-6">Get Started</Button>
+                <Button color="hover:bg-neutral bg-neutral-dark">
+                  Get Started
+                </Button>
               </div>
               <div className="flex flex-col p-6 bg-blue-600 shadow-lg rounded-lg dark:bg-blue-600 justify-between border border-blue-600">
-                <div>
+                <div className="pt-2 pb-8">
                   <h3 className="text-2xl font-bold text-center text-white">
                     Enterprise
                   </h3>
@@ -200,9 +268,7 @@ export default function LandingPage() {
                     </li>
                   </ul>
                 </div>
-                <Button className="mt-6 bg-white text-blue-600 hover:bg-gray-100">
-                  Contact Sales
-                </Button>
+                <Button>Contact Sales</Button>
               </div>
               <div className="flex flex-col p-6 bg-white shadow-lg rounded-lg dark:bg-gray-800 justify-between border border-gray-200">
                 <div>
@@ -225,16 +291,18 @@ export default function LandingPage() {
                     </li>
                   </ul>
                 </div>
-                <Button className="mt-6">Get Started</Button>
+                <Button color="hover:bg-neutral bg-neutral-dark">
+                  Get Started
+                </Button>
               </div>
             </div>
           </div>
         </section>
         <section
           id="contact"
-          className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800 mx-auto max-w-screen-lg"
+          className="w-full py-12 md:py-24 lg:py-32 bg-gray-200 dark:bg-gray-900 "
         >
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto max-w-screen-lg">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -245,16 +313,16 @@ export default function LandingPage() {
                   productivity with ExCEO.ai.
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex flex-col space-y-2">
+              <div className="w-full max-w-xl space-y-2">
+                <form className="flex flex-row space-x-2">
                   <Input
-                    className="max-w-lg flex-1"
+                    className="max-w-lg flex-1 border border-primary-light"
                     placeholder="Enter your email"
                     type="email"
                   />
                   <Button
                     color="bg-primary hover:bg-primary-dark"
-                    className="w-full"
+                    className="w-auto"
                   >
                     Request a Demo
                     <ArrowRight className="ml-2 h-4 w-4" />
