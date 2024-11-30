@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontSize: {
-        base: "1.2rem",
+        base: "14px",
       },
       colors: {
         foreground: "var(--foreground)",
