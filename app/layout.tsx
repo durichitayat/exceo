@@ -1,35 +1,38 @@
 import type { Metadata } from "next";
-import Head from "next/head";
+import { headers } from "next/headers";
 import { Roboto } from "next/font/google";
+import Header from "@/components/website-ui/header";
+import AdminHeader from "@/components/admin-ui/header";
+import Footer from "@/components/website-ui/footer";
 import "./globals.css";
 
 const roboto = Roboto({
   weight: ["400", "700"],
-  style: ["normal", "italic"],
+  style: "normal",
   subsets: ["latin"],
   display: "swap",
 });
 export const metadata: Metadata = {
-  title: "ExCEO.ai",
+  title: "ExCEO",
   description: "More time for what matters",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const headersList = headers();
+  const isPlatformSubdomain =
+    headersList.get("x-is-platform-subdomain") === "true";
+  console.log("isPlatformSubdomain", isPlatformSubdomain);
+
   return (
     <html lang="en">
-      <Head>
-        <link
-          rel="icon"
-          href="/favicon.ico"
-          sizes="any"
-        />
-      </Head>
-      <body className={`${roboto.style} ${roboto.style} text-base antialiased`}>
-        {children}
+      <body className={`${roboto.style}`}>
+        {isPlatformSubdomain ? <AdminHeader /> : <Header />}
+        <div>{children}</div>
+        <Footer />
       </body>
     </html>
   );
