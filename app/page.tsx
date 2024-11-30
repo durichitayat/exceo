@@ -1,7 +1,7 @@
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
-import Header from "@/components/ui/header";
-import Hero from "@/components/ui/hero";
+import Button from "@/components/website-ui/button";
+import Input from "@/components/website-ui/input";
+import Header from "@/components/website-ui/header";
+import Hero from "@/components/website-ui/hero";
 import { ArrowRight, CheckCircle, Clock, Mail } from "lucide-react";
 import Image from "next/image";
 
