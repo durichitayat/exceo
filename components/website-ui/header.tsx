@@ -29,6 +29,9 @@ import {
 } from "@heroicons/react/24/outline";
 import Button from "@/components/website-ui/button";
 import { Mail, User, Settings } from "lucide-react";
+import { getBaseUrl } from "@/lib/getBase";
+
+const baseUrl = getBaseUrl();
 
 // Remove top-level icons from the navigation array
 const navigation = [
@@ -100,15 +103,23 @@ export default function Header() {
   };
 
   return (
-    <header className="font-medium">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <div className="px-4 sm:px-6 lg:px-8">
         <nav className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Link
-              href="/"
-              className="flex-shrink-0 flex items-center"
+              href={"http://" + baseUrl + "/"}
+              className="flex-shrink-0 flex items-center  cursor-pointer"
             >
-              <Mail className="h-8 w-8 text-blue-600" />
+              <div className="flex h-16 shrink-0 items-center">
+                <Image
+                  alt="ExCEO Logo"
+                  src="/logo.webp"
+                  className="h-8 w-auto"
+                  width={32}
+                  height={32}
+                />
+              </div>
               <span className="ml-2 text-xl font-bold text-gray-900">
                 ExCEO.ai
               </span>
@@ -199,7 +210,7 @@ export default function Header() {
             {isLoggedIn ? (
               <>
                 <Link
-                  href={`http://platform.${window.location.hostname}`}
+                  href={`http://platform.${baseUrl}/`}
                   className="text-sm font-bold text-primary hover:text-primary-dark"
                 >
                   Go to Dashboard
@@ -406,6 +417,6 @@ export default function Header() {
           </div>
         </DialogPanel>
       </Dialog>
-    </header>
+    </>
   );
 }

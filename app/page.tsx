@@ -1,6 +1,5 @@
 import Button from "@/components/website-ui/button";
 import Input from "@/components/website-ui/input";
-import Header from "@/components/website-ui/header";
 import Hero from "@/components/website-ui/hero";
 import { ArrowRight, CheckCircle, Clock, Mail } from "lucide-react";
 import Image from "next/image";
@@ -8,8 +7,7 @@ import Image from "next/image";
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-1">
+      <main>
         {/* HERO SECTION */}
         <Hero />
         {/* FEATURES SECTION */}
@@ -17,7 +15,7 @@ export default function LandingPage() {
           id="features"
           className="w-full py-12 md:py-24 lg:py-32 bg-gray-200 dark:bg-gray-900"
         >
-          <div className="px-4 md:px-6 mx-auto grid max-w-screen-2xl">
+          <div className="px-4 md:px-6 mx-auto grid container">
             <div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                 Key Features
@@ -26,7 +24,7 @@ export default function LandingPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-20 items-center">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-2">
-                      <Clock className="h-6 w-6 text-blue-500" />
+                      <Clock className="h-6 w-6 text-primary" />
                       <h3 className="text-2xl font-bold">
                         Email Prioritization
                       </h3>
@@ -66,7 +64,7 @@ export default function LandingPage() {
                   </div>
                   <div className="order-1 md:order-2 space-y-4">
                     <div className="flex items-center space-x-2">
-                      <Mail className="h-6 w-6 text-blue-500" />
+                      <Mail className="h-6 w-6 text-primary" />
                       <h3 className="text-2xl font-bold">
                         Automated Responses
                       </h3>
@@ -92,7 +90,7 @@ export default function LandingPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-20 items-center">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-6 w-6 text-blue-500" />
+                      <CheckCircle className="h-6 w-6 text-primary" />
                       <h3 className="text-2xl font-bold">
                         Thread Summarization
                       </h3>
@@ -158,7 +156,7 @@ export default function LandingPage() {
                   Get Started
                 </Button>
               </div>
-              <div className="flex flex-col p-6 bg-blue-600 shadow-lg rounded-lg dark:bg-blue-600 justify-between border border-blue-600">
+              <div className="flex flex-col p-6 bg-primary shadow-lg rounded-lg dark:bg-primary justify-between border border-primary">
                 <div className="pt-2 pb-8">
                   <h3 className="text-2xl font-bold text-center text-white">
                     Enterprise
@@ -250,25 +248,6 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          © 2024 ExCEO.ai. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <a
-            className="text-xs hover:underline underline-offset-4"
-            href="#"
-          >
-            Terms of Service
-          </a>
-          <a
-            className="text-xs hover:underline underline-offset-4"
-            href="#"
-          >
-            Privacy
-          </a>
-        </nav>
-      </footer>
     </div>
   );
 }
