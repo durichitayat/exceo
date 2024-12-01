@@ -33,7 +33,9 @@ export default function RootLayout({
         {isPlatformSubdomain ? (
           <AdminHeader>{children}</AdminHeader>
         ) : (
-          <Header />
+          <>
+            <Header /> {children}
+          </>
         )}
         <Footer />
       </body>
