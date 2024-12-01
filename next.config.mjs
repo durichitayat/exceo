@@ -48,6 +48,11 @@ const nextConfig = {
 
   // Customize the build output
   output: "standalone",
+
+  // Add image domains
+  images: {
+    domains: ["localhost", "platform.localhost", "your-production-domain.com"],
+  },
 };
 
 // Use ES module export syntax

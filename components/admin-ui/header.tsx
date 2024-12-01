@@ -13,11 +13,7 @@ import {
 } from "@headlessui/react";
 import {
   Bars3Icon,
-  BellIcon,
-  ChartPieIcon,
   Cog6ToothIcon,
-  HomeIcon,
-  UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -25,23 +21,42 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
 import Link from "next/link";
-import { getBaseUrl } from "@/lib/getBase";
 import Image from "next/image";
 
+import { getBaseUrl } from "@/lib/getBase";
+import {
+  ChatBubbleLeftIcon,
+  HomeIcon,
+  UsersIcon,
+  BellIcon,
+  ChartPieIcon,
+} from "@heroicons/react/24/solid";
 const baseUrl = getBaseUrl();
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: HomeIcon, current: true },
-  { name: "People", href: "/people", icon: UsersIcon, current: false },
-  { name: "Reports", href: "/reports", icon: ChartPieIcon, current: false },
+  { name: "Dashboard", href: "/dashboard/", icon: HomeIcon, current: true },
+  { name: "People", href: "/people/", icon: UsersIcon, current: false },
+  { name: "Reports", href: "/reports/", icon: ChartPieIcon, current: false },
+  {
+    name: "Assistant",
+    href: "/assistant/",
+    icon: ChatBubbleLeftIcon,
+    current: false,
+  },
 ];
 const inboxes = [
-  { id: 1, name: "Priority", href: "#", initial: "🌈", current: false },
-  { id: 2, name: "Sent", href: "#", initial: "👋", current: false },
-  { id: 3, name: "All", href: "#", initial: "All", current: false },
+  {
+    id: 1,
+    name: "Priority",
+    href: "/inbox/priority/",
+    initial: "🌈",
+    current: false,
+  },
+  { id: 2, name: "Sent", href: "/inbox/sent/", initial: "👋", current: false },
+  { id: 3, name: "All", href: "/inbox/all/", initial: "All", current: false },
 ];
 const userNavigation = [
-  { name: "Your profile", href: "#" },
+  { name: "Your profile", href: "/user/profile/" },
   { name: "Sign out", href: "#" },
 ];
 
@@ -122,8 +137,8 @@ export default function Header() {
                               href={item.href}
                               className={classNames(
                                 item.current
-                                  ? "bg-gray-50 text-indigo-600"
-                                  : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                                  ? "bg-gray-50 text-primary"
+                                  : "text-gray-700 hover:bg-gray-50 hover:text-primary",
                                 "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                               )}
                             >
@@ -131,8 +146,8 @@ export default function Header() {
                                 aria-hidden="true"
                                 className={classNames(
                                   item.current
-                                    ? "text-indigo-600"
-                                    : "text-gray-400 group-hover:text-indigo-600",
+                                    ? "text-primary"
+                                    : "text-gray-400 group-hover:text-primary",
                                   "size-6 shrink-0"
                                 )}
                               />
@@ -156,16 +171,16 @@ export default function Header() {
                               href={inbox.href}
                               className={classNames(
                                 inbox.current
-                                  ? "bg-gray-50 text-indigo-600"
-                                  : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                                  ? "bg-gray-50 text-primary"
+                                  : "text-gray-700 hover:bg-gray-50 hover:text-primary",
                                 "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                               )}
                             >
                               <span
                                 className={classNames(
                                   inbox.current
-                                    ? "border-indigo-600 text-indigo-600"
-                                    : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
+                                    ? "border-primary text-primary"
+                                    : "border-gray-200 text-gray-400 group-hover:border-primary group-hover:text-primary",
                                   "flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium"
                                 )}
                               >
@@ -179,12 +194,12 @@ export default function Header() {
                     </li>
                     <li className="mt-auto">
                       <Link
-                        href="/settings"
-                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                        href="/settings/"
+                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-primary"
                       >
                         <Cog6ToothIcon
                           aria-hidden="true"
-                          className="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
+                          className="size-6 shrink-0 text-gray-400 group-hover:text-primary"
                         />
                         Settings
                       </Link>
@@ -233,8 +248,8 @@ export default function Header() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-gray-50 text-indigo-600"
-                              : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                              ? "bg-gray-50 text-primary"
+                              : "text-gray-700 hover:bg-gray-50 hover:text-primary",
                             "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                           )}
                         >
@@ -242,8 +257,8 @@ export default function Header() {
                             aria-hidden="true"
                             className={classNames(
                               item.current
-                                ? "text-indigo-600"
-                                : "text-gray-400 group-hover:text-indigo-600",
+                                ? "text-primary"
+                                : "text-gray-400 group-hover:text-primary",
                               "size-6 shrink-0"
                             )}
                           />
@@ -267,16 +282,16 @@ export default function Header() {
                           href={inbox.href}
                           className={classNames(
                             inbox.current
-                              ? "bg-gray-50 text-indigo-600"
-                              : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+                              ? "bg-gray-50 text-primary"
+                              : "text-gray-700 hover:bg-gray-50 hover:text-primary",
                             "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                           )}
                         >
                           <span
                             className={classNames(
                               inbox.current
-                                ? "border-indigo-600 text-indigo-600"
-                                : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
+                                ? "border-primary text-primary"
+                                : "border-gray-200 text-gray-400 group-hover:border-primary group-hover:text-primary",
                               "flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium"
                             )}
                           >
@@ -290,12 +305,12 @@ export default function Header() {
                 </li>
                 <li className="mt-auto">
                   <a
-                    href="#"
-                    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                    href="/settings/"
+                    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-primary"
                   >
                     <Cog6ToothIcon
                       aria-hidden="true"
-                      className="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
+                      className="size-6 shrink-0 text-gray-400 group-hover:text-primary"
                     />
                     Settings
                   </a>
