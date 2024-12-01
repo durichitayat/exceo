@@ -14,25 +14,25 @@ const config: Config = {
       colors: {
         foreground: "var(--foreground)",
         primary: {
-          light: '#4DD0E1',  // Light Teal for hover states
-          DEFAULT: '#0097A7', // Teal for primary buttons and links
-          dark: '#006064',    // Dark Teal for active states
+          light: '#AEDFF7',  // Soft Sky Blue for hover states
+          DEFAULT: '#0066d4', // Electric Blue for primary buttons and links
+          dark: '#0056B3',    // Darker Electric Blue for active states
         },
         secondary: {
-          light: '#FFB74D',   // Light Orange for accents
-          DEFAULT: '#FF9800', // Orange for secondary buttons
-          dark: '#F57C00',    // Dark Orange for hovers
+          light: '#FFBB66',   // Light Orange for accents
+          DEFAULT: '#FF7F11', // Vibrant Orange for secondary buttons
+          dark: '#CC6600',    // Darker Orange for hovers
         },
         neutral: {
           light: '#F5F5F5',   // Light Gray for backgrounds
-          DEFAULT: '#9E9E9E', // Gray for borders and subtle text
-          dark: '#616161',    // Dark Gray for text
+          DEFAULT: '#3C4858', // Slate Gray for text and subtle UI elements
+          dark: '#212529',    // Charcoal Black for bold text and headers
         },
         success: {
-          DEFAULT: '#28A745', // Green for success messages
+          DEFAULT: '#28A745', // Emerald Green for success messages
         },
         warning: {
-          DEFAULT: '#FFC107', // Yellow for warnings
+          DEFAULT: '#FFC107', // Light Gold for warnings
         },
         danger: {
           DEFAULT: '#DC3545', // Red for error messages
@@ -42,9 +42,8 @@ const config: Config = {
         },
         background: {
           light: '#FFFFFF',   // White background for cards and sections
-          DEFAULT: '#F0F2F5', // Off-white for the main background
+          DEFAULT: '#F5F5F5', // Light Gray for the main background
         },
-
       },
     },
   },

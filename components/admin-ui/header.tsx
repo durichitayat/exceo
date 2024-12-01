@@ -34,7 +34,7 @@ import {
 const baseUrl = getBaseUrl();
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard/", icon: HomeIcon, current: true },
+  { name: "Dashboard", href: "/dashboard/", icon: HomeIcon, current: false },
   { name: "People", href: "/people/", icon: UsersIcon, current: false },
   { name: "Reports", href: "/reports/", icon: ChartPieIcon, current: false },
   {
@@ -65,7 +65,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header() {
+export default function Header({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -422,7 +422,7 @@ export default function Header() {
           </div>
 
           <main className="py-10">
-            <div className="px-4 sm:px-6 lg:px-8">{/* Your content */}</div>
+            <div className="px-4 sm:px-6 lg:px-8">{children}</div>
           </main>
         </div>
       </div>

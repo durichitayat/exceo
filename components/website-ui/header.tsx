@@ -27,8 +27,8 @@ import {
   PuzzlePieceIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
-import Button from "@/components/website-ui/button";
-import { Mail, User, Settings } from "lucide-react";
+import Button from "@/components/ui/button";
+import { Mail, User, Settings, HelpCircleIcon } from "lucide-react";
 import { getBaseUrl } from "@/lib/getBase";
 
 const baseUrl = getBaseUrl();
@@ -158,7 +158,7 @@ export default function Header() {
                       >
                         <PopoverPanel className="absolute z-10 mt-5 w-screen max-w-md transform px-4 sm:px-0">
                           <div className="overflow-hidden bg-white shadow-xl ring-1 ring-black ring-opacity-5 border">
-                            <div className="">
+                            <div className="text-sm  my-4">
                               {item.items?.map((subItem) => (
                                 <Link
                                   key={subItem.name}
@@ -184,7 +184,7 @@ export default function Header() {
                               ))}
                             </div>
                             {item.name === "Product" && (
-                              <div className="border-t border-gray-300 grid grid-cols-2 divide-x divide-gray-300">
+                              <div className="border-t border-gray-300 grid grid-cols-2 divide-x divide-gray-300 text-sm">
                                 {callsToAction.map((cta) => (
                                   <Link
                                     key={cta.name}
@@ -215,22 +215,37 @@ export default function Header() {
                 >
                   Go to Dashboard
                 </Link>
+
+                {/* Separator */}
+                <div
+                  aria-hidden="true"
+                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200"
+                />
+
+                {/* Profile dropdown */}
                 <Menu
                   as="div"
                   className="relative inline-block text-left"
                 >
-                  <MenuButton className="flex items-center">
-                    <Image
-                      src="/placeholder.webp"
-                      alt="User"
-                      width={40}
-                      height={40}
-                      className="rounded-full p-1"
+                  <MenuButton className="-m-1.5 flex items-center p-1.5">
+                    <span className="sr-only">Open user menu</span>
+                    <img
+                      alt=""
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      className="size-8 rounded-full bg-gray-50"
                     />
-                    <ChevronDownIcon
-                      className="ml-2 h-5 w-5 text-gray-700"
-                      aria-hidden="true"
-                    />
+                    <span className="hidden lg:flex lg:items-center">
+                      <span
+                        aria-hidden="true"
+                        className="ml-4 text-sm/6 font-semibold text-gray-900"
+                      >
+                        Tom Cook
+                      </span>
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="ml-2 size-5 text-gray-400"
+                      />
+                    </span>
                   </MenuButton>
                   <Transition
                     as={Fragment}
@@ -241,7 +256,7 @@ export default function Header() {
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 translate-y-1"
                   >
-                    <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg bg-white shadow-lg">
+                    <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg bg-white shadow-lg border  text-sm font-medium">
                       <div className="py-1">
                         <MenuItem>
                           {({ active }) => (
@@ -262,7 +277,7 @@ export default function Header() {
                               href="/settings"
                               className={`${
                                 active ? "bg-primary text-white" : ""
-                              } flex items-center px-4 py-2 text-sm`}
+                              } flex items-center px-4 py-2`}
                             >
                               <Settings className="mr-2 h-4 w-4" />
                               Settings
@@ -275,9 +290,9 @@ export default function Header() {
                               href="/help"
                               className={`${
                                 active ? "bg-primary text-white" : ""
-                              } flex items-center px-4 py-2 text-sm`}
+                              } flex items-center px-4 py-2`}
                             >
-                              <Settings className="mr-2 h-4 w-4" />
+                              <HelpCircleIcon className="mr-2 h-4 w-4" />
                               Help
                             </Link>
                           )}
@@ -289,7 +304,7 @@ export default function Header() {
                               onClick={handleLogout}
                               className={`${
                                 active ? "bg-primary text-white" : ""
-                              } flex items-center w-full px-4 py-2 text-sm text-gray-700`}
+                              } flex items-center w-full px-4 py-2 text-gray-700`}
                             >
                               Log out
                             </button>
@@ -344,7 +359,7 @@ export default function Header() {
               href="/"
               className="-m-1.5 p-1.5 flex items-center"
             >
-              <Mail className="h-8 w-8 text-blue-600" />
+              <Mail className="h-8 w-8 text-primary" />
               <span className="ml-2 text-xl font-bold text-gray-900">
                 ExCEO.ai
               </span>

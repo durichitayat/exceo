@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { Roboto } from "next/font/google";
 import Header from "@/components/website-ui/header";
 import AdminHeader from "@/components/admin-ui/header";
-import Footer from "@/components/website-ui/footer";
+import Footer from "@/components/ui/footer";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -30,8 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.style}`}>
-        {isPlatformSubdomain ? <AdminHeader /> : <Header />}
-        <div>{children}</div>
+        {isPlatformSubdomain ? (
+          <AdminHeader>{children}</AdminHeader>
+        ) : (
+          <Header />
+        )}
         <Footer />
       </body>
     </html>
