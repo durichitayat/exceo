@@ -25,7 +25,6 @@ export default function RootLayout({
   const headersList = headers();
   const isPlatformSubdomain =
     headersList.get("x-is-platform-subdomain") === "true";
-  console.log("isPlatformSubdomain", isPlatformSubdomain);
 
   return (
     <html lang="en">
