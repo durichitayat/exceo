@@ -66,7 +66,7 @@ export default function ExecutiveAssistantDashboard() {
             </ul>
           </CardContent>
           <CardFooter>
-            <Button variant="outline">View All Drafts</Button>
+            <Button variant="secondary">View All Drafts</Button>
           </CardFooter>
         </Card>
 
@@ -373,10 +373,15 @@ function DraftItem({ subject, recipient, preview }: DraftItemProps) {
         <p className="text-sm text-gray-700 mt-1">{preview}</p>
       </div>
       <div className="flex space-x-2">
-        <Button size="sm">Edit</Button>
+        <Button
+          variant="outline"
+          size="sm"
+        >
+          Edit
+        </Button>
         <Button
           size="sm"
-          variant="outline"
+          variant="primary"
         >
           Approve
         </Button>
