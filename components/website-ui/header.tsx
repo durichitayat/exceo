@@ -156,7 +156,7 @@ export default function Header() {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <PopoverPanel className="absolute z-10 mt-5 w-screen max-w-md transform px-4 sm:px-0">
+                        <PopoverPanel className="absolute mt-5 w-screen max-w-md transform px-4 sm:px-0">
                           <div className="overflow-hidden bg-white shadow-xl ring-1 ring-black ring-opacity-5 border">
                             <div className="text-sm  my-4">
                               {item.items?.map((subItem) => (
@@ -353,7 +353,7 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden"
       >
-        <DialogPanel className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel className="fixed inset-0 overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link
               href="/"

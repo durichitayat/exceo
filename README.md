@@ -163,6 +163,11 @@ exceo/
 
 to run migrations whenever you make changes to your schema. You can do this by modifying the `lib/schema.ts` file and then running `npm run migrate`.
 
+Because Prisma Client is tailored to your own schema, you need to update it every time your Prisma schema file is changing by running the following command:
+`npx prisma generate` or `npm run prisma:generate`
+
+Add Records to DB: `npx prisma studio`
+
 [Console](https://console.neon.tech/app/projects/bold-night-30838175?database=neondb)
 
 Example Server Action named `create` that inserts data into the postgres database:
