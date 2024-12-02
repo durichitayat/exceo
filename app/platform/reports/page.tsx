@@ -18,13 +18,6 @@ import {
   Download,
 } from "lucide-react";
 import Button from "@/components/ui/button";
-import { Transition } from "@headlessui/react";
-import {
-  ListboxButton,
-  Listbox,
-  ListboxOption,
-  ListboxOptions,
-} from "@headlessui/react";
 import { Tab, TabGroup, TabPanels, TabList, TabPanel } from "@headlessui/react";
 import Progress from "@/components/ui/progress";
 import {
@@ -73,15 +66,24 @@ export default function ReportPage() {
             Executive Reports
           </h2>
           <div className="flex items-center space-x-4">
-            <Button variant="secondary">
+            <Button
+              variant="outline-secondary"
+              size="sm"
+            >
               <Calendar className="mr-2 h-4 w-4" />
               Date
             </Button>
-            <Button variant="secondary">
+            <Button
+              variant="outline-secondary"
+              size="sm"
+            >
               <Filter className="mr-2 h-4 w-4" />
               Filters
             </Button>
-            <Button variant="secondary">
+            <Button
+              variant="outline-secondary"
+              size="sm"
+            >
               <Download className="mr-2 h-4 w-4" />
               Export
             </Button>
