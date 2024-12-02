@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Mail,
-  Send,
-  HelpCircle,
-  Users,
-  Clock,
-  Calendar,
-  Phone,
-  FileText,
-  ChevronDown,
-} from "lucide-react";
+import { Mail, Calendar, Phone, FileText, ChevronDown } from "lucide-react";
 import Button from "@/components/ui/button";
 import {
   Card,
@@ -23,9 +13,9 @@ import {
 } from "@/components/ui/card";
 
 import { Dialog, Transition, Listbox } from "@headlessui/react";
-import Badge from "@/components/ui/badge";
 import Label from "@/components/ui/label";
-import Input from "@/components/ui/input";
+
+import EmailForm from "@/components/admin-ui/EmailForm";
 
 export default function ExecutiveAssistantDashboard() {
   const [isFollowUpDialogOpen, setIsFollowUpDialogOpen] = useState(false);
@@ -37,6 +27,19 @@ export default function ExecutiveAssistantDashboard() {
         <h1 className="text-3xl font-bold text-gray-800">
           Executive Assistant Dashboard
         </h1>
+
+        {/* Email Form */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Compose Email</CardTitle>
+            <CardDescription>
+              Send an email to a colleague or team
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <EmailForm />
+          </CardContent>
+        </Card>
 
         {/* Drafts Section */}
         <Card>

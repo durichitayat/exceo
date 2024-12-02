@@ -1,5 +1,7 @@
 # ExCEO.ai
 
+![ExCEO.ai Logo](./public/logo.webp)
+
 ExCEO.ai is an AI-powered email management tool designed specifically for executives. It leverages advanced language models to prioritize emails, summarize lengthy threads, and automate routine responses. By integrating company and user-specific insights, ExCEO.ai aims to streamline executive communication, reducing the time spent on email management by up to 60%.
 
 ## Table of Contents
@@ -10,7 +12,7 @@ ExCEO.ai is an AI-powered email management tool designed specifically for execut
   - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Features](#features)
-- [Contributing](#contributing)
+- [Database](#database)
 - [License](#license)
 - [Contact](#contact)
 
@@ -117,7 +119,7 @@ Before you begin, ensure you have met the following requirements:
 
 This project uses the Next.js **App Router**, providing a new way to structure your application.
 
-```
+```plaintext
 exceo/
 ├── app/
 │   ├── api/
@@ -154,30 +156,48 @@ exceo/
 - **Digest Reports**: Daily and weekly AI-generated summaries highlighting key emails and required actions.
 - **Integration with Enterprise Systems**: Inclusion of relevant business data in responses.
 
-## Contributing
+## Database
 
-We welcome contributions from the community. Please follow these steps:
+- **NEON Postgres** <https://neon.tech/docs/get-started-with-neon/query-with-neon-sql-editor>
+- **Connect with NEON Serverless Driver**
 
-1. Fork the repository.
-2. Create a new branch:
+to run migrations whenever you make changes to your schema. You can do this by modifying the `lib/schema.ts` file and then running `npm run migrate`.
 
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
+[Console](https://console.neon.tech/app/projects/bold-night-30838175?database=neondb)
 
-3. Make your changes and commit them:
+Example Server Action named `create` that inserts data into the postgres database:
 
-   ```bash
-   git commit -m 'Add your message here'
-   ```
+```ts
+// File: app/page.tsx
+import { neon } from "@neondatabase/serverless";
 
-4. Push to the branch:
+export default function Page() {
+  async function create(formData: FormData) {
+    "use server";
+    // Connect to the Neon database
+    const sql = neon(`${process.env.DATABASE_URL}`);
+    const comment = formData.get("comment");
+    // Insert the comment from the form into the Postgres database
+    await sql("INSERT INTO comments (comment) VALUES ($1)", [comment]);
+  }
 
-   ```bash
-   git push origin feature/YourFeature
-   ```
+  return (
+    <form action={create}>
+      <input
+        type="text"
+        placeholder="write a comment"
+        name="comment"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
 
-5. Open a pull request describing your changes.
+### Server Actions
+
+![Server Actions](./public/arch.jpg)
+[Miro project](https://miro.com/app/board/uXjVL9G0WXc=/)
 
 ## License
 
@@ -193,11 +213,11 @@ For questions or support, please contact:
 
 ---
 
-*Note: This application is currently under development. For more details and collaboration opportunities, please visit our GitHub repository.*
+_Note: This application is currently under development. For more details and collaboration opportunities, please visit our GitHub repository._
 
 ---
 
-# Learn More
+## Learn More
 
 To learn more about Next.js and the technologies used in this project, take a look at the following resources:
 
@@ -206,5 +226,3 @@ To learn more about Next.js and the technologies used in this project, take a lo
 - [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction.html) - Understand how to use LangChain's LangGraph.
 - [Vercel AI SDK](https://sdk.vercel.ai/docs) - Documentation for building AI-powered applications.
 - [OpenAI API Documentation](https://platform.openai.com/docs/introduction) - Learn how to use the OpenAI API.
-
-
