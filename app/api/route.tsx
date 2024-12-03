@@ -1,3 +1,5 @@
+// Example API route that classifies an email as spam or not
+
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
