@@ -199,6 +199,15 @@ export default function Page() {
 }
 ```
 
+## To Create a New Table or Adjust Existing
+
+1. Open `./prisma/schema.prisma`
+2. Add Table Model or Change Existing Model
+3. Seed your data by opening `./lib/prisma/seed.ts`
+4. Run Migration `npm run prisma:migrate`
+5. Push Commit to Github or create a new branch if you want a development database
+6. View your data `npx prisma studio`
+
 ### Server Actions
 
 ![Server Actions](./public/arch.jpg)

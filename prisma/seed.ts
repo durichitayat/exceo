@@ -37,7 +37,34 @@ async function main() {
     },
   })
 
-  console.log({ alice, bob })
+  const dylan = await prisma.user.upsert({
+    where: { email: 'bob@example.com' },
+    update: {},
+    create: {
+      email: 'dylan@example.com',
+      name: 'Dylan',
+      emails: {
+        create: [
+          {
+            subject: 'Hello from Dylan',
+            content: 'This is a test email from Bob.',
+          },
+        ],
+      },
+    },
+  })
+
+  const exampleEmail = await prisma.email.create({
+    data: {
+      subject: 'Example Email Subject',
+      content: 'This is an example email content.',
+      user: {
+        connect: { email: 'alice@example.com' } // Connect to an existing user
+      }
+    }
+  })
+
+  console.log({ alice, bob, dylan, exampleEmail })
 }
 
 main()
