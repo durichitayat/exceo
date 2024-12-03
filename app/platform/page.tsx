@@ -18,7 +18,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { Dialog, Transition, Listbox } from "@headlessui/react";
+import {
+  Dialog,
+  Transition,
+  TransitionChild,
+  Listbox,
+} from "@headlessui/react";
 import Label from "@/components/ui/label";
 
 import EmailForm from "@/components/admin-ui/EmailForm";
@@ -204,7 +209,7 @@ export default function ExecutiveAssistantDashboard() {
             className="relative z-10"
             onClose={() => setIsFollowUpDialogOpen(false)}
           >
-            <Transition.Child
+            <TransitionChild
               as={React.Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0"
@@ -214,11 +219,11 @@ export default function ExecutiveAssistantDashboard() {
               leaveTo="opacity-0"
             >
               <div className="fixed inset-0 bg-black bg-opacity-25" />
-            </Transition.Child>
+            </TransitionChild>
 
             <div className="fixed inset-0 overflow-y-auto">
               <div className="flex min-h-full items-center justify-center p-4 text-center">
-                <Transition.Child
+                <TransitionChild
                   as={React.Fragment}
                   enter="ease-out duration-300"
                   enterFrom="opacity-0 scale-95"
@@ -236,8 +241,8 @@ export default function ExecutiveAssistantDashboard() {
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Choose when you'd like to be reminded to follow up on
-                        this task if there's no conclusion.
+                        {`Choose when you'd like to be reminded to follow up on
+                        this task if there's no conclusion.`}
                       </p>
                     </div>
                     <div className="mt-4">
@@ -382,7 +387,7 @@ export default function ExecutiveAssistantDashboard() {
                       </Button>
                     </div>
                   </Dialog.Panel>
-                </Transition.Child>
+                </TransitionChild>
               </div>
             </div>
           </Dialog>
