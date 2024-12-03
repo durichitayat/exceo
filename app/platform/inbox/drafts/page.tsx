@@ -8,7 +8,6 @@ import {
   X,
   ChevronDown,
   ChevronUp,
-  Search,
   Filter,
 } from "lucide-react";
 import Button from "@/components/ui/button";
@@ -23,6 +22,27 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Listbox, Dialog, Transition } from "@headlessui/react";
+
+interface Draft {
+  id: number;
+  subject?: string;
+  recipient?: string;
+  preview?: string;
+  status?: string;
+}
+
+interface DraftItemProps {
+  draft: Draft;
+  onApprove?: () => void;
+  onReject?: () => void;
+  onEdit?: () => void;
+}
+
+interface EditDraftDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  draft: Draft | null;
+}
 
 export default function DraftsInbox() {
   const [drafts, setDrafts] = useState([
@@ -68,10 +88,10 @@ export default function DraftsInbox() {
     },
   ]);
 
-  const [selectedDraft, setSelectedDraft] = useState(null);
+  const [selectedDraft, setSelectedDraft] = useState<Draft | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
-  const handleApprove = (id) => {
+  const handleApprove = (id: number) => {
     setDrafts(
       drafts.map((draft) =>
         draft.id === id ? { ...draft, status: "approved" } : draft
@@ -79,7 +99,7 @@ export default function DraftsInbox() {
     );
   };
 
-  const handleReject = (id) => {
+  const handleReject = (id: number) => {
     setDrafts(
       drafts.map((draft) =>
         draft.id === id ? { ...draft, status: "rejected" } : draft
@@ -87,7 +107,7 @@ export default function DraftsInbox() {
     );
   };
 
-  const handleEdit = (draft) => {
+  const handleEdit = (draft: Draft) => {
     setSelectedDraft(draft);
     setIsEditDialogOpen(true);
   };
@@ -106,22 +126,42 @@ export default function DraftsInbox() {
               <Input
                 placeholder="Search drafts..."
                 className="flex-grow"
-                startIcon={<Search className="h-5 w-5 text-gray-400" />}
+                // startIcon={<Search className="h-5 w-5 text-gray-400" />}
               />
               <Listbox>
-                <div className="relative">
-                  <Listbox.Button className="w-[180px]">
-                    <SelectValue placeholder="Filter by status" />
-                  </Listbox.Button>
-                  <Transition>
-                    <Listbox.Options className="absolute mt-1 w-full bg-white shadow-lg">
-                      <Listbox.Option value="all">All Statuses</Listbox.Option>
-                      <Listbox.Option value="pending">Pending</Listbox.Option>
-                      <Listbox.Option value="approved">Approved</Listbox.Option>
-                      <Listbox.Option value="rejected">Rejected</Listbox.Option>
-                    </Listbox.Options>
-                  </Transition>
-                </div>
+                {({ open }) => (
+                  <>
+                    <div className="relative">
+                      <Listbox.Button className="w-[180px]">
+                        <span>Filter by status</span>
+                      </Listbox.Button>
+                      <Transition
+                        show={open}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Listbox.Options className="absolute mt-1 w-full bg-white shadow-lg">
+                          <Listbox.Option value="all">
+                            All Statuses
+                          </Listbox.Option>
+                          <Listbox.Option value="pending">
+                            Pending
+                          </Listbox.Option>
+                          <Listbox.Option value="approved">
+                            Approved
+                          </Listbox.Option>
+                          <Listbox.Option value="rejected">
+                            Rejected
+                          </Listbox.Option>
+                        </Listbox.Options>
+                      </Transition>
+                    </div>
+                  </>
+                )}
               </Listbox>
               <Button variant="outline">
                 <Filter className="h-5 w-5 mr-2" />
@@ -166,7 +206,7 @@ export default function DraftsInbox() {
   );
 }
 
-function DraftItem({ draft, onApprove, onReject, onEdit }) {
+function DraftItem({ draft, onApprove, onReject, onEdit }: DraftItemProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -189,10 +229,11 @@ function DraftItem({ draft, onApprove, onReject, onEdit }) {
                 : "warning"
             }
           >
-            {draft.status.charAt(0).toUpperCase() + draft.status.slice(1)}
+            {(draft.status ?? "unknown").charAt(0).toUpperCase() +
+              (draft.status ?? "unknown").slice(1)}
           </Badge>
           <Button
-            variant="ghost"
+            variant="outline"
             size="sm"
             onClick={() => setIsExpanded(!isExpanded)}
           >
@@ -238,7 +279,7 @@ function DraftItem({ draft, onApprove, onReject, onEdit }) {
   );
 }
 
-function EditDraftDialog({ isOpen, onClose, draft }) {
+function EditDraftDialog({ isOpen, onClose, draft }: EditDraftDialogProps) {
   const [editedDraft, setEditedDraft] = useState(draft);
 
   React.useEffect(() => {
@@ -296,8 +337,8 @@ function EditDraftDialog({ isOpen, onClose, draft }) {
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Make changes to the AI-generated draft email. Click save
-                    when you're done.
+                    {`Make changes to the AI-generated draft email. Click save
+                    when you're done.`}
                   </p>
                 </div>
                 <div className="mt-4">
@@ -314,7 +355,7 @@ function EditDraftDialog({ isOpen, onClose, draft }) {
                         value={editedDraft?.subject || ""}
                         onChange={(e) =>
                           setEditedDraft({
-                            ...editedDraft,
+                            ...editedDraft!,
                             subject: e.target.value,
                           })
                         }
@@ -333,7 +374,7 @@ function EditDraftDialog({ isOpen, onClose, draft }) {
                         value={editedDraft?.recipient || ""}
                         onChange={(e) =>
                           setEditedDraft({
-                            ...editedDraft,
+                            ...editedDraft!,
                             recipient: e.target.value,
                           })
                         }
@@ -352,7 +393,7 @@ function EditDraftDialog({ isOpen, onClose, draft }) {
                         value={editedDraft?.preview || ""}
                         onChange={(e) =>
                           setEditedDraft({
-                            ...editedDraft,
+                            ...editedDraft!,
                             preview: e.target.value,
                           })
                         }
